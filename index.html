@@ -35,7 +35,7 @@
     <script>
         const API = "https://api.wheretheiss.at/v1/satellites/25544";
         let firstTime = true;
-        let mymap = L.map('mapid').setView([0, 0], 5);
+        let mymap = L.map('mapid').setView([0, 0], 2);
             // Add tiles to map with Mapbox token
             L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
                 attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -68,12 +68,12 @@
             const { latitude, longitude } = await getData();
             console.log("UPDATED POS ON MAP")
             console.log(latitude, longitude)
-            // Create a map
-            
+            marker.setLatLng([latitude, longitude])
 
             if (firstTime) {
-                mymap.setView([latitude, longitude], 5);
+                mymap.setView([latitude, longitude], 2);
                 firstTime = false;
+                console.log("This is firstime");
             }
         }
         getMap();
